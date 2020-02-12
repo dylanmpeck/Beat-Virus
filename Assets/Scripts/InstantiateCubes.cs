@@ -33,7 +33,7 @@ public class InstantiateCubes : MonoBehaviour
         {
             if (sampleCube[i] != null)
             {
-                sampleCube[i].transform.localScale = new Vector3(10, (AudioPeer.samples[i] * maxScale) * 2, 10);
+                sampleCube[i].transform.localScale = new Vector3(10, (AudioPeer.audioBand[i] * maxScale) * 2, 10);
             }
         }
     }

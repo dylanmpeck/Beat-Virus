@@ -6,8 +6,20 @@ using UnityEngine;
 public class AudioPeer : MonoBehaviour
 {
     AudioSource audioSource;
-    public static float[] samples = new float[512];
-    public static float[] freqBands = new float[8];
+
+    // Audio spectrum info pulled from FFT algorithm
+    static float[] samples = new float[512];
+    static float[] freqBands = new float[8];
+    static float[] bandBuffer = new float[8];
+    float[] bufferDecrease = new float[8];
+
+    // Frequency band info converted to value between 0 and 1
+    float[] freqBandHighest = new float[8];
+    public static float[] audioBand = new float[8];
+    public static float[] audioBandBuffer = new float[8];
+
+    public static float amplitude, amplitudeBuffer;
+    float amplitudeHighest;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +32,62 @@ public class AudioPeer : MonoBehaviour
     {
         GetSpectrumAudioSource();
         MakeFrequencyBands();
+        BandBuffer();
+        CreateAudioBands();
+        GetAmplitude();
+    }
+
+    void GetAmplitude()
+    {
+        float currentAmplitude = 0;
+        float currentAmplitudeBuffer = 0;
+
+        for (int i = 0; i < 8; i++)
+        {
+            currentAmplitude += audioBand[i];
+            currentAmplitudeBuffer += audioBandBuffer[i];
+        }
+        if (currentAmplitude > amplitudeHighest)
+        {
+            amplitudeHighest = currentAmplitude;
+        }
+        amplitude = currentAmplitude / amplitudeHighest;
+        amplitudeBuffer = currentAmplitudeBuffer / amplitudeHighest;
     }
 
     void GetSpectrumAudioSource()
     {
         audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+    }
+
+    void CreateAudioBands()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (freqBands[i] > freqBandHighest[i])
+            {
+                freqBandHighest[i] = freqBands[i];
+            }
+            audioBand[i] = (freqBands[i] / freqBandHighest[i]);
+            audioBandBuffer[i] = (bandBuffer[i] / freqBandHighest[i]);
+        }
+    }
+
+    void BandBuffer()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (freqBands[i] > bandBuffer[i])
+            {
+                bandBuffer[i] = freqBands[i];
+                bufferDecrease[i] = 0.005f;
+            }
+            if (freqBands[i] < bandBuffer[i])
+            {
+                bandBuffer[i] -= bufferDecrease[i];
+                bufferDecrease[i] *= 1.2f;
+            }
+        }
     }
 
     void MakeFrequencyBands()
