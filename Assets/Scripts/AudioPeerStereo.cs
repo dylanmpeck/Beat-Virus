@@ -3,36 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioPeer : MonoBehaviour
+public class AudioPeerStereo : MonoBehaviour
 {
     AudioSource audioSource;
 
+
+    static float[] samplesLeft = new float[512];
+    static float[] samplesRight = new float[512];
+
     // Audio spectrum info pulled from FFT algorithm
-    private float[] samplesLeft = new float[512];
-    private float[] samplesRight = new float[512];
-
-    private float[] freqBands = new float[8];
-    private float[] bandBuffer = new float[8];
-    private float[] bufferDecrease = new float[8];
-    private float[] freqBandHighest = new float[8];
-
-    private float[] freqBands64 = new float[64];
-    private float[] bandBuffer64 = new float[64];
-    private float[] bufferDecrease64 = new float[64];
-    private float[] freqBandHighest64 = new float[64];
+    static float[] freqBands = new float[8];
+    static float[] bandBuffer = new float[8];
+    float[] bufferDecrease = new float[8];
 
     // Frequency band info converted to value between 0 and 1
-    [HideInInspector]
-    public float[] audioBand, audioBandBuffer;
+    float[] freqBandHighest = new float[8];
+    public static float[] audioBand = new float[8];
+    public static float[] audioBandBuffer = new float[8];
 
-    [HideInInspector]
-    public float[] audioBand64, audioBandBuffer64;
-
-    [HideInInspector]
-    public float amplitude, amplitudeBuffer;
+    public static float amplitude, amplitudeBuffer;
     float amplitudeHighest;
 
     public float audioProfile;
+
     public enum ChannelSelection { Stereo, Left, Right };
 
     public ChannelSelection channel;
@@ -40,10 +33,6 @@ public class AudioPeer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioBand = new float[8];
-        audioBandBuffer = new float[8];
-        audioBand64 = new float[64];
-        audioBandBuffer64 = new float[64];
         audioSource = GetComponent<AudioSource>();
         SetAudioProfile();
     }
@@ -53,11 +42,8 @@ public class AudioPeer : MonoBehaviour
     {
         GetSpectrumAudioSource();
         MakeFrequencyBands();
-        MakeFrequencyBands64();
         BandBuffer();
-        BandBuffer64();
         CreateAudioBands();
-        CreateAudioBands64();
         GetAmplitude();
     }
 
@@ -106,19 +92,6 @@ public class AudioPeer : MonoBehaviour
         }
     }
 
-    void CreateAudioBands64()
-    {
-        for (int i = 0; i < 64; i++)
-        {
-            if (freqBands64[i] > freqBandHighest64[i])
-            {
-                freqBandHighest64[i] = freqBands64[i];
-            }
-            audioBand64[i] = (freqBands64[i] / freqBandHighest64[i]);
-            audioBandBuffer64[i] = (bandBuffer64[i] / freqBandHighest64[i]);
-        }
-    }
-
     void BandBuffer()
     {
         for (int i = 0; i < 8; i++)
@@ -132,23 +105,6 @@ public class AudioPeer : MonoBehaviour
             {
                 bandBuffer[i] -= bufferDecrease[i];
                 bufferDecrease[i] *= 1.2f;
-            }
-        }
-    }
-
-    void BandBuffer64()
-    {
-        for (int i = 0; i < 64; i++)
-        {
-            if (freqBands64[i] > bandBuffer64[i])
-            {
-                bandBuffer64[i] = freqBands64[i];
-                bufferDecrease64[i] = 0.005f;
-            }
-            if (freqBands64[i] < bandBuffer64[i])
-            {
-                bandBuffer64[i] -= bufferDecrease64[i];
-                bufferDecrease64[i] *= 1.2f;
             }
         }
     }
@@ -202,63 +158,6 @@ public class AudioPeer : MonoBehaviour
             average /= count;
 
             freqBands[i] = average * 10;
-        }
-    }
-
-    void MakeFrequencyBands64()
-    {
-        /*
-         * 22050 / 512 = 43 hertz per sample
-         * 
-         * Sample Frequency Bands
-         * 20 - 60 hz
-         * 60 - 250 hz
-         * 250 - 500 hz
-         * 500 - 2000 hz
-         * 2000 - 4000 hz
-         * 4000 - 6000 hz
-         * 6000 - 20000 hz
-         * 
-         * 0-15 = 1 sample = 16
-         * 16-31 = 2 samples = 32
-         * 32-39 = 4 samples = 32
-         * 40-47 = 6 samples = 48
-         * 48-55 = 16 samples = 128
-         * 56-63 = 32 samples = 256
-         *                      512 samples total
-         */
-
-        int count = 0;
-        int sampleCount = 1;
-        int power = 0;
-
-        for (int i = 0; i < 64; i++)
-        {
-            float average = 0;
-            //int sampleCount = (int)Mathf.Pow(2, i) * 2;
-
-            if (i == 16 || i == 32 || i == 40 || i == 48 || i == 56)
-            {
-                power++;
-                sampleCount = (int)Mathf.Pow(2, power);
-                if (power == 3)
-                    sampleCount -= 2;
-            }
-
-            for (int j = 0; j < sampleCount; j++)
-            {
-                if (channel == ChannelSelection.Stereo)
-                    average += (samplesLeft[count] + samplesRight[count]) * (count + 1);
-                else if (channel == ChannelSelection.Left)
-                    average += samplesLeft[count] * (count + 1);
-                else if (channel == ChannelSelection.Right)
-                    average += samplesRight[count] * (count + 1);
-                count++;
-            }
-
-            average /= count;
-
-            freqBands64[i] = average * 80;
         }
     }
 }

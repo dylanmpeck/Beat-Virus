@@ -10,6 +10,8 @@ public class InstantiateCubes : MonoBehaviour
 
     public float maxScale;
 
+    public AudioPeer audioPeer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class InstantiateCubes : MonoBehaviour
         {
             if (sampleCube[i] != null)
             {
-                sampleCube[i].transform.localScale = new Vector3(10, (AudioPeer.audioBand[i] * maxScale) * 2, 10);
+                sampleCube[i].transform.localScale = new Vector3(10, (audioPeer.audioBand[i] * maxScale) * 2, 10);
             }
         }
     }

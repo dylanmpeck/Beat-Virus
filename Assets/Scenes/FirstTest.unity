@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.496413, b: 0.5748175, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -138,10 +138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 1
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1001 &48649813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,6 +294,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e991c593c3a2f54ea8ebb630efa47a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioBand: []
+  audioBandBuffer: []
+  audioBand64: []
+  audioBandBuffer64: []
+  amplitude: 0
+  amplitudeBuffer: 0
+  audioProfile: 0
+  channel: 0
 --- !u!82 &95266098
 AudioSource:
   m_ObjectHideFlags: 0
@@ -458,10 +468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 4
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &114777899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -640,10 +652,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 1
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &211563915 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -662,10 +676,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 0
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &211563920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -690,10 +706,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 2
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &229205200
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,10 +936,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 7
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &333910078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1119,10 +1139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 6
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &585695948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1141,10 +1163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 1
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &585695953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1306,6 +1330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sampleCubePrefab: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6, type: 3}
   maxScale: 100000
+  audioPeer: {fileID: 0}
 --- !u!4 &701517774
 Transform:
   m_ObjectHideFlags: 0
@@ -1429,10 +1454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 5
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1001 &760006360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1571,10 +1598,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 3
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &873278850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1593,10 +1622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 6
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &873278855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1766,10 +1797,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 3
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &1078099642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1794,10 +1827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 5
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &1107374866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1822,10 +1857,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 0
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1001 &1159853215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2079,10 +2116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 7
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &1309585111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,10 +2232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 4
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &1401623808 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -2215,10 +2256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 6
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1001 &1450673918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2295,10 +2338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 7
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1001 &1478888056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2379,10 +2424,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 4
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &1612486929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,10 +2535,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 5
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &1713792275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,6 +2645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e66008e7759e4bd7a99326c38380118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 1
   minIntensity: 1
   maxIntensity: 8
@@ -2939,10 +2989,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 3
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &2017882732 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -2961,10 +3013,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 2
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &2078122269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,6 +3049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e66008e7759e4bd7a99326c38380118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 6
   minIntensity: 1
   maxIntensity: 8
@@ -3090,10 +3145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 95266097}
   band: 0
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 1
+  brightLight: 1
 --- !u!1 &2147433429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -3112,10 +3169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f6298c2071b96409a6e524c6bf5a30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   band: 2
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &2147433434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,

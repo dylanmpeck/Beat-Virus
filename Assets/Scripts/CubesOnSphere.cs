@@ -6,6 +6,7 @@ public class CubesOnSphere : MonoBehaviour
 {
     public GameObject cubePrefab;
     int numOfCubes = 12;
+    public AudioPeer audioPeer;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class CubesOnSphere : MonoBehaviour
         for (int i = 0; i < numOfCubes; i++)
         {
             GameObject cube = GameObject.Instantiate(cubePrefab);
+            cube.GetComponent<FrequencyBandScale>().audioPeer = audioPeer;
 
             //cube.transform.position = origin + Random.onUnitSphere * radius;
 
@@ -28,12 +30,14 @@ public class CubesOnSphere : MonoBehaviour
             cube.transform.SetParent(this.transform);
 
             cube.GetComponent<FrequencyBandScale>().band = Random.Range(0, 8);
+
+            cube.GetComponent<FrequencyBandScale>().brightLight = true;
         }
 
         for (int i = 0; i < numOfCubes; i++)
         {
             GameObject cube = GameObject.Instantiate(cubePrefab);
-
+            cube.GetComponent<FrequencyBandScale>().audioPeer = audioPeer;
             //cube.transform.position = origin + Random.onUnitSphere * radius;
 
             float theta = (2 * Mathf.PI / numOfCubes) * i;

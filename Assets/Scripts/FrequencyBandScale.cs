@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class FrequencyBandScale : MonoBehaviour
 {
+    public AudioPeer audioPeer;
     public int band;
     public float startScale, scaleMultiplier;
     public bool useBuffer;
+    public bool brightLight;
     Material material;
     Color origColor;
 
@@ -22,25 +24,30 @@ public class FrequencyBandScale : MonoBehaviour
     {
         if (useBuffer)
         {
+            if (float.IsNaN(audioPeer.audioBandBuffer[band])) return;
             transform.localScale = new Vector3(transform.localScale.x,
-                                   (AudioPeer.audioBandBuffer[band] * scaleMultiplier) + startScale,
+                                   (audioPeer.audioBandBuffer[band] * scaleMultiplier) + startScale,
                                     transform.localScale.z);
-            Color color = new Color(AudioPeer.audioBandBuffer[band], AudioPeer.audioBandBuffer[band], AudioPeer.audioBandBuffer[band]);
-            //float r = Mathf.Clamp(origColor.r * AudioPeer.audioBandBuffer[band], 0, 1);
-            //float g = Mathf.Clamp(origColor.g * AudioPeer.audioBandBuffer[band], 0, 1);
-            //float b = Mathf.Clamp(origColor.b * AudioPeer.audioBandBuffer[band], 0, 1);
-            //Color color = new Color(r, g, b);
+            Color color;
+            if (brightLight)
+                color = new Color(audioPeer.audioBandBuffer[band], audioPeer.audioBandBuffer[band], audioPeer.audioBandBuffer[band]);
+            else
+            {
+                float r = Mathf.Clamp(origColor.r * audioPeer.audioBandBuffer[band], 0, 1);
+                float g = Mathf.Clamp(origColor.g * audioPeer.audioBandBuffer[band], 0, 1);
+                float b = Mathf.Clamp(origColor.b * audioPeer.audioBandBuffer[band], 0, 1);
+                color = new Color(r, g, b);
+            }
             material.SetColor("_EmissionColor", color);
         }
         if (!useBuffer)
         {
+            if (float.IsNaN(audioPeer.audioBand[band])) return;
             transform.localScale = new Vector3(transform.localScale.x,
-                                   (AudioPeer.audioBand[band] * scaleMultiplier) + startScale,
+                                   (audioPeer.audioBand[band] * scaleMultiplier) + startScale,
                                     transform.localScale.z);
-            Color color = new Color(AudioPeer.audioBand[band], AudioPeer.audioBand[band], AudioPeer.audioBand[band]);
+            Color color = new Color(audioPeer.audioBand[band], audioPeer.audioBand[band], audioPeer.audioBand[band]);
             material.SetColor("_EmissionColor", color);
         }
-
-   
     }
 }
