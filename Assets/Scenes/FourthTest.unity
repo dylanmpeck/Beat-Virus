@@ -404,6 +404,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &114777899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -508,6 +509,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &211563920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -651,6 +653,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &333910078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -812,6 +815,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &585695953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1053,6 +1057,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &873278855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1070,6 +1075,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1135,13 +1141,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.00455569, y: 0.98320585, z: -0.18075226, w: -0.024781007}
-  m_LocalPosition: {x: 0.3972124, y: 1.2092152, z: 1.4038672}
+  m_LocalRotation: {x: -0.00067076227, y: 0.99562395, z: -0.09317255, w: -0.0071677584}
+  m_LocalPosition: {x: 0.336452, y: 1.4055532, z: 1.4386598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be76b3099f48542adb03c21f7919208b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SineWaveShader: {fileID: 4800000, guid: 16ca3aa75b0734d6fb078f7348a8c774, type: 3}
+  audioPeer: {fileID: 95266097}
+  flip: 0
 --- !u!1 &1078099637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129616, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1165,6 +1186,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &1078099642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1194,6 +1216,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &1107374866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
@@ -1829,6 +1852,7 @@ MonoBehaviour:
   startScale: 1
   scaleMultiplier: 10
   useBuffer: 0
+  brightLight: 0
 --- !u!4 &2147433434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 442806, guid: 0a905f3d9aa6e24479815ff3dbced2a6,
