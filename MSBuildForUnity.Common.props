@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <MSBuildForUnityVersion>0.8.3</MSBuildForUnityVersion>
+    
+    <MSBuildForUnityGeneratedOutputDirectory>C:\Users\42Robotics\Documents\UnityAudioVisualizer\MSBuild\Projects</MSBuildForUnityGeneratedOutputDirectory>
+    <UnityProjectAssetsPath>C:\Users\42Robotics\Documents\UnityAudioVisualizer\Assets</UnityProjectAssetsPath>
+    <MSBuildForUnityDefaultOutputPath>$(UnityProjectAssetsPath)\Dependencies</MSBuildForUnityDefaultOutputPath>
+    
+    <UnityCurrentPlatform>WSA</UnityCurrentPlatform>
+    <UnityCurrentTargetFramework>net46</UnityCurrentTargetFramework>
+    
+    <UnityMajorVersion>2019</UnityMajorVersion>
+    <UnityMinorVersion>2</UnityMinorVersion>
+  </PropertyGroup>
+  
+  <Target Name="_RemoveOutputDirectory" AfterTargets="Clean">
+    <RemoveDir Directories="$(OutputPath)" />
+  </Target>
+</Project>
