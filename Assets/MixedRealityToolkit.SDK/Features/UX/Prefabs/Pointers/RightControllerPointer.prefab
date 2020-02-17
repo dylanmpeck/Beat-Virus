@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 114269887534944512}
   - component: {fileID: 3980487836371375048}
   m_Layer: 0
-  m_Name: DefaultControllerPointer
+  m_Name: RightControllerPointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,6 +121,7 @@ LineRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -343,12 +344,12 @@ MonoBehaviour:
   lineDataSource: {fileID: 8090720277987393429}
   lineColor:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 0}
-    key1: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+    key0: {r: 0.98039216, g: 0, b: 0.9372549, a: 0}
+    key1: {r: 0.98039216, g: 0, b: 0.9372549, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 1}
-    key3: {r: 0, g: 0, b: 0, a: 0.49803922}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 1}
+    key4: {r: 0, g: 0, b: 0, a: 1}
+    key5: {r: 0, g: 0, b: 0, a: 1}
     key6: {r: 0, g: 0, b: 0, a: 0.9411765}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 32768
@@ -394,7 +395,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  widthMultiplier: 0.01
+  widthMultiplier: 0.04
   colorOffset: 0
   widthOffset: 0
   stepMode: 0
@@ -446,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a969079783d81144bce7e89bd03ac89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handedness: 1
+  handedness: 2
   destroyOnSourceLost: 1
   useSourcePoseData: 0
   poseAction:
@@ -455,7 +456,7 @@ MonoBehaviour:
     axisConstraint: 7
   cursorPrefab: {fileID: 1000012072213228, guid: 5b3e2856904e43c680f84f326861032a,
     type: 3}
-  disableCursorOnStart: 0
+  disableCursorOnStart: 1
   setCursorVisibilityOnSourceDetected: 0
   raycastOrigin: {fileID: 0}
   activeHoldAction:
@@ -469,14 +470,14 @@ MonoBehaviour:
   requiresHoldAction: 0
   requiresActionBeforeEnabling: 0
   overrideGlobalPointerExtent: 0
-  pointerExtent: 10
+  pointerExtent: 5
   defaultPointerExtent: 5.5
   sphereCastRadius: 0.1
   LineCastResolution: 2
   LineColorSelected:
     serializedVersion: 2
-    key0: {r: 0.990566, g: 0.990566, b: 0.990566, a: 0}
-    key1: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 0}
+    key0: {r: 0.98039216, g: 0, b: 0.9372549, a: 0}
+    key1: {r: 0.8962264, g: 0.029592399, b: 0.8580948, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -504,8 +505,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 4
   LineColorValid:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 0}
-    key1: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 0}
+    key0: {r: 0.8207547, g: 0.019357419, b: 0.7854935, a: 0}
+    key1: {r: 0.6415094, g: 0, b: 0.6132832, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 1}
     key4: {r: 0, g: 0, b: 0, a: 0}

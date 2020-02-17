@@ -51,7 +51,7 @@ MeshRenderer:
   m_GameObject: {fileID: 3088423203512364681}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d645115b1a29c41868eb30f84901da03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 0}
   startScale: 0.2
   maxScale: 1
   useBuffer: 1

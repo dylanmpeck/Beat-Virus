@@ -11,6 +11,7 @@ public class CubesOnSphere : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioPeer = GameObject.FindObjectOfType<AudioPeer>();
         float radius = GetComponent<SphereCollider>().radius;
         Vector3 origin = this.transform.position;
 
@@ -49,6 +50,8 @@ public class CubesOnSphere : MonoBehaviour
             cube.transform.SetParent(this.transform);
 
             cube.GetComponent<FrequencyBandScale>().band = Random.Range(0, 8);
+
+            cube.GetComponent<FrequencyBandScale>().brightLight = true;
         }
     }
 
