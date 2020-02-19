@@ -6,6 +6,7 @@ using UnityEngine;
 public class AudioPeer : MonoBehaviour
 {
     AudioSource audioSource;
+    public static AudioSource mainSong;
 
     // Audio spectrum info pulled from FFT algorithm
     private float[] samplesLeft = new float[512];
@@ -45,6 +46,7 @@ public class AudioPeer : MonoBehaviour
         audioBand64 = new float[64];
         audioBandBuffer64 = new float[64];
         audioSource = GetComponent<AudioSource>();
+        mainSong = audioSource;
         SetAudioProfile();
     }
 
@@ -85,6 +87,9 @@ public class AudioPeer : MonoBehaviour
         }
         amplitude = currentAmplitude / amplitudeHighest;
         amplitudeBuffer = currentAmplitudeBuffer / amplitudeHighest;
+
+        if (amplitudeBuffer == 0.0f)
+            audioSource.Stop();
     }
 
     void GetSpectrumAudioSource()

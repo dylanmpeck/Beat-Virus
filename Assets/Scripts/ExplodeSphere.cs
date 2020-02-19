@@ -46,7 +46,7 @@ public class ExplodeSphere : MonoBehaviour
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, explosionUpward);
             }
         }
-        StartCoroutine(Destroy());
+        //StartCoroutine(Destroy());
     }
 
 /*    private void OnEnable()

@@ -470,7 +470,7 @@ MonoBehaviour:
   requiresHoldAction: 0
   requiresActionBeforeEnabling: 0
   overrideGlobalPointerExtent: 0
-  pointerExtent: 5
+  pointerExtent: 15
   defaultPointerExtent: 5.5
   sphereCastRadius: 0.1
   LineCastResolution: 2

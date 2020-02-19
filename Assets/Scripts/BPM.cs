@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BPM : MonoBehaviour
@@ -15,6 +16,8 @@ public class BPM : MonoBehaviour
     public static int tap;
     public static bool customBeat;
 
+    [SerializeField] AudioClip song;
+
     private void Awake()
     {
         if (bpmInstance != null && bpmInstance != this)
@@ -29,8 +32,7 @@ public class BPM : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    {
-        
+    { 
     }
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class BPM : MonoBehaviour
         }
     }
 
-    void Tapping()
+    public void TapTempo()
     {
      /*   if (Input.GetKeyUp(KeyCode.F1))
         {
@@ -73,8 +75,6 @@ public class BPM : MonoBehaviour
         }
         if (customBeat)
         {*/
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
                 if (tap < 4)
                 {
                     tapTime[tap] = Time.realtimeSinceStartup;
@@ -84,14 +84,26 @@ public class BPM : MonoBehaviour
                 {
                     float averageTime = ((tapTime[1] - tapTime[0]) + (tapTime[2] - tapTime[1]) +
                                         (tapTime[3] - tapTime[2])) / 3;
-                    bpm = (float)System.Math.Round((double)60 / averageTime, 2);
+                    //bpm = (float)System.Math.Round((double)60 / averageTime, 2);
+                    Debug.Log((float)System.Math.Round((double)60 / averageTime, 2));
                     tap = 0;
                     beatTimer = 0;
                     beatTimerD8 = 0;
                     beatCountFull = 0;
                     customBeat = false;
                 }
-            }
         //}
     }
+
+/*    void DynamicallyGetBPM()
+    {
+        detector.update();
+
+        if (localLastBeatOccured != detector.getLastBeat())
+        {
+            TapTempo();
+
+            localLastBeatOccured = detector.getLastBeat();
+        }
+    }*/
 }

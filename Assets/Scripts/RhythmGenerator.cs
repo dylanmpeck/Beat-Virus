@@ -36,13 +36,17 @@ public class RhythmGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Don't spawn anything if the song is close to finishing.
+        if (AudioPeer.mainSong.time > AudioPeer.mainSong.clip.length - BPM.beatInterval * 8)
+            return;
+
         if (spawnOffbeat && BPM.beatD8)
         {
             spawnOffbeat = false;
             SpawnSphere(rhythmPrefab, Random.Range(0, 2), Random.Range(0, lanes.Count));
         }
 
-        if (BPM.beatFull)
+        if (BPM.beatFull && BPM.beatCountFull % 2 == 0)
         {
             currentSpawn = ChooseSpawnOption();
 
