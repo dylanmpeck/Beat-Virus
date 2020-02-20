@@ -36,6 +36,7 @@ public class DragDestroy : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             graphics.SetActive(false);
             StartCoroutine(Destroy());
+            SFX.PlayBurstSound();
         }
     }
 

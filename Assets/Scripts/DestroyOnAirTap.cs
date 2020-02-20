@@ -77,7 +77,7 @@ public class DestroyOnAirTap : MonoBehaviour, IMixedRealityFocusHandler, IMixedR
                 GameManager.IncreaseCombo();
             }
 
-
+            SFX.PlayShootSound();
 
             CalculateScore(clickTime);
 
@@ -114,6 +114,7 @@ public class DestroyOnAirTap : MonoBehaviour, IMixedRealityFocusHandler, IMixedR
         explodeSphere.GetComponent<ExplodeSphere>().sphereColor = GetComponentInChildren<MeshRenderer>().material;
         //Destroy(this.gameObject);
         graphics.SetActive(false);
+        SFX.PlayBurstSound();
         StartCoroutine(Destroy());
     }
 
