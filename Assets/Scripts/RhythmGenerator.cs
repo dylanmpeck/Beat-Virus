@@ -102,8 +102,8 @@ public class RhythmGenerator : MonoBehaviour
     SpawnChoices ChooseSpawnOption()
     {
         if (audioPeer.amplitudeBuffer < .5f)
-            return RollDice(new List<int>() { 50, 85, 95 });
-        return RollDice(new List<int>() { 25, 75, 95 });
+            return RollDice(new List<int>() { 40, 85, 90 });
+        return RollDice(new List<int>() { 20, 75, 90 });
     }
 
     SpawnChoices RollDice(List<int> thresholds)

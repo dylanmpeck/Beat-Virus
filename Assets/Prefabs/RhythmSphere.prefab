@@ -106,6 +106,10 @@ MonoBehaviour:
   explodeSphere: {fileID: 2026957187520842211}
   graphics: {fileID: 5440727559986863601}
   hitText: {fileID: 4626739655286769258, guid: 53f990d4fa4ea1b45b482128e11376d6, type: 3}
+  purpleShot: {fileID: 3226650875861654684, guid: b88e0ca14d644ae4595c6f6587f525e8,
+    type: 3}
+  greenShot: {fileID: 3226650875861654684, guid: f53a518e5122fd24e86ae264f5226361,
+    type: 3}
   leftMaterial: {fileID: 0}
   rightMaterial: {fileID: 0}
 --- !u!1 &5440727559986863601

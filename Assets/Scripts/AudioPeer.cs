@@ -38,6 +38,8 @@ public class AudioPeer : MonoBehaviour
 
     public ChannelSelection channel;
 
+    public static float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,8 @@ public class AudioPeer : MonoBehaviour
         CreateAudioBands();
         CreateAudioBands64();
         GetAmplitude();
+
+        timer += Time.deltaTime;
     }
 
     void SetAudioProfile()

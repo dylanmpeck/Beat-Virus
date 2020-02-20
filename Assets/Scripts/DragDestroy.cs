@@ -30,6 +30,7 @@ public class DragDestroy : MonoBehaviour
             //GameObject explode = Instantiate(explodeSphere, transform.position, transform.rotation);
 
             // Debug.Log(this.gameObject.GetComponent<MeshRenderer>().materials[0].ToString());
+            GameManager.Scored(100);
             explodeSphere.GetComponent<ExplodeSphere>().sphereColor = graphics.GetComponent<MeshRenderer>().material;
             explodeSphere.SetActive(true);
             GetComponent<Collider>().enabled = false;
