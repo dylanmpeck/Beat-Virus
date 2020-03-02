@@ -1,2 +1,3 @@
 # Beat-Virus
-Rhythm based shooter in Virtual Reality using FFT dynamic audio visualization to spawn and modulate environment.
+![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/BVGif.gif)
+[Full Gameplay Demo](https://www.youtube.com/watch?v=9JyZwx7B5Ws)
