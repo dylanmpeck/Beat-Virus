@@ -12,10 +12,9 @@ In Beat Virus, multi colored germ-like enemies spawn to the beat of the music an
 
 ## Audio Visualization
 My main goal with this was to explore audio visualization in Unity and how I could integrate it with mixed reality gameplay. In Beat Virus, almost every element of the world around the player is reacting to the music in some shape or form. To do this, I used Unity's built in Fast Fourier transform method which Unity calls [GetSpectrumData](https://docs.unity3d.com/ScriptReference/AudioSource.GetSpectrumData.html).
-
+___
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFT.png)
-
-### Break Down of Audio Visualization Process
+___
 I pass in a float array of size 512 (samplesLeft and samplesRight in the above image) which is filled up with the audio spectrum data in the current timestamp. In this case, the whole frequency spectrum gets split up in 512 parts, or samples, from low to high accordingly. Higher numbers in the float array will represent bigger amplitudes for the frequency band of its index.
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFTTest.gif)
@@ -40,4 +39,6 @@ With this, I'm able to multiply the frequency band, audio band, or average of th
 ## Gameplay
 At this stage of the game, the gameplay code is fairly simple. Enemy sphere spawning is handled with an object pool, so I only create a handful at the beginning of play and destroy at the end of a session. The explosion effect with minispheres is done by applying force to a large amount of preloaded spheres that are activated when a sphere is shot, reset to original position after a set time, and then deactivated again.
 
-The bulk of the XR functionality is done with Mixed Reality Toolkit and Open XR components. While developing this game, I had the opportunity to try it out on a HoloLens 2, so I wanted all the code and controls to function on both a Windows Immersive VR Headset and the HoloLens 2. So, in most cases, I use MRTK's [pointer interface](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.IMixedRealityPointerHandler.html) and [manipulation handler](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_ManipulationHandler.html) component because they automatically worked well enough with both devices. But, when I was scripting my own logic, I would check for hands using Microsoft's [HandJointUtils](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.HandJointUtils.html) first and then use controllers from the proper [XR Node](https://docs.unity3d.com/ScriptReference/XR.XRNode.html). Here's some sample code of me spawning projectile particles when you shoot in the right hand or controller.
+The bulk of the controls/XR functionality is done with Mixed Reality Toolkit and Open XR components. While developing this game, I had the opportunity to try it out on a HoloLens 2, so I wanted all the code and controls to function on both a Windows Immersive VR Headset and the HoloLens 2. So, in most cases, I use MRTK's [pointer interface](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.IMixedRealityPointerHandler.html) and [manipulation handler](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_ManipulationHandler.html) component because they automatically worked well enough with both devices. But, when I was scripting my own logic, I would check for hands using Microsoft's [HandJointUtils](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.HandJointUtils.html) first and then use controllers from the proper [XR Node](https://docs.unity3d.com/ScriptReference/XR.XRNode.html). Here's some sample code of me spawning projectile particles when you shoot in the right hand or controller.
+
+![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/HandsAndControllers.png)
