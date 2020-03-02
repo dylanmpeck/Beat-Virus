@@ -37,7 +37,8 @@ With this, I'm able to multiply the frequency band, audio band, or average of th
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/Ball.gif)
 ___
 ## Gameplay
-At this stage of the game, the gameplay code is fairly simple. Enemy sphere spawning is handled with an object pool, so I only create a handful at the beginning of play and destroy at the end of a session. After every two beats (quarter notes) of the song, my spawner class makes a decision of what to spawn. Currently its spawn choices are nothing, one random colored ball placed in one of four lanes, two balls of both colors placed in two separate lanes, or a different sphere type which the player must drag. The weights of what the spawner is most likely to choose are affected by the amplitude of the music. On lower amplitudes, it's more likely to throw nothing while on higher amplitudes its more likely to spawn more.  
+At this stage of the game, the gameplay code is fairly simple. Enemy sphere spawning is handled with an object pool, so I only create a handful at the beginning of play and destroy at the end of a session. After every two beats (quarter notes) of the song, my [RhythmGenerator](https://github.com/dylanmpeck/Beat-Virus/blob/master/Assets/Scripts/RhythmGenerator.cs
+) class makes a decision of what to spawn. Currently its spawn choices are nothing, one random colored ball placed in one of four lanes, two balls of both colors placed in two separate lanes, or a different sphere type which the player must drag. The weights of what the spawner is most likely to choose are affected by the amplitude of the music. On lower amplitudes, it's more likely to throw nothing while on higher amplitudes its more likely to spawn more.  
 
 The explosion effect with minispheres is done by applying force to a large amount of preloaded spheres that are activated when a sphere is shot, reset to original position after a set time, and then deactivated again.
 
@@ -47,3 +48,9 @@ The bulk of the controls/XR functionality is done with Mixed Reality Toolkit and
 
 The score system is calculated based off the bpm of the song playing. The player will get a percentage of how many points the enemy sphere is worth based off how precise he or she shot it to the beat. If the player clicked close enough to the beat within a certain error margin, a combo multiplier to the previous points will rise up to x8. Missing a beat causes the combo to drop.
 
+![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/Score.png)
+___
+## TODOS
+This game could go in a few different directions. At the moment, my idea is to integrate spotify, use the Spotify API's deeper music analysis tools, and convert the game into an arcade shooter. Or, go down a music generative path similar to Rez where the player would be generating musical sounds through his or her actions.
+
+Either way, the XR facets of the game could be improved with punching, grabbing, and dodging mechanics. More interesting enemy types like a red and blue sphere that needs to be combined into a purple one so it can be shot would be fun. Also, an upgrade system with collectible currency would be great in this.
