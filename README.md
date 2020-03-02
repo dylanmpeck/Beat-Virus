@@ -15,7 +15,7 @@ My main goal with this was to explore audio visualization in Unity and how I cou
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFT.png)
 
-I pass in a float array of size 512 (samplesLeft and samplesRight in the above image) which is filled up with the audio spectrum data in the current timestamp. In this case, the whole frequency spectrum gets split up in 512 parts, or samples, from low to high accordingly. Higher numbers in the float array will represent bigger amplitudes for the frequency band of its index.
+I pass in a samples float array of size 512 (samplesLeft and samplesRight in the above image) which is filled up with the audio spectrum data in the current timestamp. In this case, the whole frequency spectrum gets split up in 512 parts, or samples, from low to high accordingly and assigned to the samples float array. When reading the samples float array, higher values from a given index will represent bigger amplitudes for the corresponding frequency band.
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFTTest.gif)
 
