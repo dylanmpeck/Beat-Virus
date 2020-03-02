@@ -152,6 +152,7 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\42Robotics\\Documents\\UnityAudioVisualizer\\Assets\\MixedRealityToolkit.Providers\\WindowsMixedReality\\DotNetAdapter\\NuGet.Config",
+        "C:\\Users\\42Robotics\\Documents\\UnityAudioVisualizer\\Assets\\NuGet.Config",
         "C:\\Users\\42Robotics\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

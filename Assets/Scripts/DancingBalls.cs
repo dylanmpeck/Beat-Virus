@@ -12,16 +12,32 @@ public class DancingBalls : MonoBehaviour
     Color origColor;
 
     // Start is called before the first frame update
-    void Start()
+/*    void Start()
     {
         //material = GetComponent<MeshRenderer>().materials[0];
         child.GetComponent<MeshRenderer>().material = material;
 
         audioPeer = GameObject.Find("Audio Source").GetComponent<AudioPeer>();
         startScale = .2f;
-        maxScale = .6f;
+        maxScale = .45f;
 
         origColor = material.color;
+    }*/
+
+    private void OnEnable()
+    {
+        //material = GetComponent<MeshRenderer>().materials[0];
+        if (material)
+        {
+            child.GetComponent<MeshRenderer>().material = material;
+            origColor = material.color;
+        }
+
+        audioPeer = GameObject.Find("Audio Source").GetComponent<AudioPeer>();
+        startScale = .2f;
+        maxScale = .45f;
+
+
     }
 
     // Update is called once per frame

@@ -57,7 +57,7 @@ public class DestroyOnAirTap : MonoBehaviour, IMixedRealityFocusHandler, IMixedR
             if (clicked) return;
             clicked = true;
 
-            float clickTime = (AudioPeer.timer - .1f) % BPM.beatInterval;
+            float clickTime = (AudioPeer.timer) % BPM.beatInterval;
            // Debug.Log(clickTime);
             if (clickTime >= 0.0f && clickTime <= errorMargin)
             {
@@ -108,14 +108,12 @@ public class DestroyOnAirTap : MonoBehaviour, IMixedRealityFocusHandler, IMixedR
 
         // Regular destroy code
 
-        //GameObject explode = Instantiate(explodeSphere, transform.position, transform.rotation);
-        explodeSphere.SetActive(explodeSphere);
-        // Debug.Log(this.gameObject.GetComponent<MeshRenderer>().materials[0].ToString());
         explodeSphere.GetComponent<ExplodeSphere>().sphereColor = GetComponentInChildren<MeshRenderer>().material;
-        //Destroy(this.gameObject);
+        explodeSphere.SetActive(true);
         graphics.SetActive(false);
         SFX.PlayBurstSound();
-        StartCoroutine(Destroy());
+        GetComponent<RhythmMove>().enabled = false;
+        StartCoroutine(Deactivate());
     }
 
     void CalculateScore(float clickTime)
@@ -129,10 +127,14 @@ public class DestroyOnAirTap : MonoBehaviour, IMixedRealityFocusHandler, IMixedR
         GameManager.Scored((int)(maxScoreForBall * scorePercentage));
     }
 
-    IEnumerator Destroy()
+    public IEnumerator Deactivate()
     {
         yield return new WaitForSeconds(1.2f);
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        graphics.SetActive(true);
+        explodeSphere.SetActive(false);
+        clicked = false;
+        this.gameObject.SetActive(false);
     }
 
     IEnumerator SpawnAfterDelay(float delay)

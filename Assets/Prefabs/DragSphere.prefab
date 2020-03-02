@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2289304101652556243}
   - component: {fileID: 2289304101652556242}
   - component: {fileID: -3900516173540622947}
-  - component: {fileID: -8674385381055689589}
   - component: {fileID: 8441134453956076101}
   - component: {fileID: 8730578319607533693}
   - component: {fileID: 7070958002570014432}
@@ -65,6 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0022a0c2c6ab24e8e6eae80b48f845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleIndicator: {fileID: 0}
 --- !u!114 &-3900516173540622947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,20 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 712997701068459560}
   material: {fileID: 0}
---- !u!114 &-8674385381055689589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2289304101652556245}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b59030f920e4d7ea32f1abd47039d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 129616, guid: ee59cb0c26b7c4ac3b4e873e2b1b9378, type: 3}
-  audioPeer: {fileID: 0}
 --- !u!114 &8441134453956076101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2289304101652556245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23f9be7a3cb53794ead8b55e784b65aa, type: 3}
   m_Name: 
@@ -182,7 +168,7 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   boundsOverride: {fileID: 0}
   boundsCalculationMethod: 0
-  activation: 0
+  activation: 3
   scaleMinimum: 0.2
   scaleMaximum: 2
   flattenAxis: 0

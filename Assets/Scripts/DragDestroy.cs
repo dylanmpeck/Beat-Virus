@@ -7,15 +7,18 @@ public class DragDestroy : MonoBehaviour
     [SerializeField] GameObject explodeSphere;
     [SerializeField] GameObject graphics;
     RhythmMove mover;
+    Rigidbody rb;
+    bool collided;
 
     private void Start()
     {
         mover = GetComponent<RhythmMove>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void EnableMovement()
     {
-        mover.enabled = true;
+        if (!collided) mover.enabled = true;
     }
 
     public void DisableMovement()
@@ -27,22 +30,28 @@ public class DragDestroy : MonoBehaviour
     {
         if (collision.collider != this && collision.collider.tag == "DragSphere")
         {
-            //GameObject explode = Instantiate(explodeSphere, transform.position, transform.rotation);
+            if (collided) return;
+            collided = true;
 
-            // Debug.Log(this.gameObject.GetComponent<MeshRenderer>().materials[0].ToString());
             GameManager.Scored(100);
             explodeSphere.GetComponent<ExplodeSphere>().sphereColor = graphics.GetComponent<MeshRenderer>().material;
             explodeSphere.SetActive(true);
             GetComponent<Collider>().enabled = false;
             graphics.SetActive(false);
-            StartCoroutine(Destroy());
+            StartCoroutine(Deactivate());
             SFX.PlayBurstSound();
         }
     }
 
-    IEnumerator Destroy()
+    IEnumerator Deactivate()
     {
+        mover.enabled = false;
         yield return new WaitForSeconds(1.2f);
-        Destroy(this.gameObject);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        graphics.SetActive(true);
+        explodeSphere.SetActive(false);
+        collided = false;
+        this.gameObject.SetActive(false);
     }
 }
