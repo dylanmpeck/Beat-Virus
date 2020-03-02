@@ -9,12 +9,12 @@ Beat Virus is a rhythm based shooter game in virtual reality developed for a Win
 In Beat Virus, multi colored germ-like enemies spawn to the beat of the music and float towards the player. In order to survive and score points, the player must fight back with two different colored projectile weapons and hit the the enemy with the matching color. On top of that, one will build a combo multiplier if he or she shoots the enemies on beat.
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/BeatVirusThumbnail%20(2).png)
-
+___
 ## Audio Visualization
 My main goal with this was to explore audio visualization in Unity and how I could integrate it with mixed reality gameplay. In Beat Virus, almost every element of the world around the player is reacting to the music in some shape or form. To do this, I used Unity's built in Fast Fourier transform method which Unity calls [GetSpectrumData](https://docs.unity3d.com/ScriptReference/AudioSource.GetSpectrumData.html).
-___
+
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFT.png)
-___
+
 I pass in a float array of size 512 (samplesLeft and samplesRight in the above image) which is filled up with the audio spectrum data in the current timestamp. In this case, the whole frequency spectrum gets split up in 512 parts, or samples, from low to high accordingly. Higher numbers in the float array will represent bigger amplitudes for the frequency band of its index.
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFTTest.gif)
@@ -35,10 +35,15 @@ With this, I'm able to multiply the frequency band, audio band, or average of th
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/Tunnel.gif)
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/Ball.gif)
-
+___
 ## Gameplay
-At this stage of the game, the gameplay code is fairly simple. Enemy sphere spawning is handled with an object pool, so I only create a handful at the beginning of play and destroy at the end of a session. The explosion effect with minispheres is done by applying force to a large amount of preloaded spheres that are activated when a sphere is shot, reset to original position after a set time, and then deactivated again.
+At this stage of the game, the gameplay code is fairly simple. Enemy sphere spawning is handled with an object pool, so I only create a handful at the beginning of play and destroy at the end of a session. After every two beats (quarter notes) of the song, my spawner class makes a decision of what to spawn. Currently its spawn choices are nothing, one random colored ball placed in one of four lanes, two balls of both colors placed in two separate lanes, or a different sphere type which the player must drag. The weights of what the spawner is most likely to choose are affected by the amplitude of the music. On lower amplitudes, it's more likely to throw nothing while on higher amplitudes its more likely to spawn more.  
 
-The bulk of the controls/XR functionality is done with Mixed Reality Toolkit and Open XR components. While developing this game, I had the opportunity to try it out on a HoloLens 2, so I wanted all the code and controls to function on both a Windows Immersive VR Headset and the HoloLens 2. So, in most cases, I use MRTK's [pointer interface](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.IMixedRealityPointerHandler.html) and [manipulation handler](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_ManipulationHandler.html) component because they automatically worked well enough with both devices. But, when I was scripting my own logic, I would check for hands using Microsoft's [HandJointUtils](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.HandJointUtils.html) first and then use controllers from the proper [XR Node](https://docs.unity3d.com/ScriptReference/XR.XRNode.html). Here's some sample code of me spawning projectile particles when you shoot in the right hand or controller.
+The explosion effect with minispheres is done by applying force to a large amount of preloaded spheres that are activated when a sphere is shot, reset to original position after a set time, and then deactivated again.
+
+The bulk of the controls/XR functionality is done with Mixed Reality Toolkit and Open XR components. While developing this game, I had the opportunity to try it out on a HoloLens 2, so I wanted all the code and controls to function on both a Windows Immersive VR Headset and the HoloLens 2. So, in most cases, I use MRTK's [pointer interface](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.IMixedRealityPointerHandler.html) and [manipulation handler](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_ManipulationHandler.html) component because they automatically worked well enough with both devices. But, when I was scripting my own logic, I would check for hands using Microsoft's [HandJointUtils](https://microsoft.github.io/MixedRealityToolkit-Unity/api/Microsoft.MixedReality.Toolkit.Input.HandJointUtils.html) first and then use controllers from the proper [XR Node](https://docs.unity3d.com/ScriptReference/XR.XRNode.html). Here's some sample code of me spawning projectile particles when you shoot in the correct hand or controller.
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/HandsAndControllers.png)
+
+The score system is calculated based off the bpm of the song playing. The player will get a percentage of how many points the enemy sphere is worth based off how precise he or she shot it to the beat. If the player clicked close enough to the beat within a certain error margin, a combo multiplier to the previous points will rise up to x8. Missing a beat causes the combo to drop.
+
