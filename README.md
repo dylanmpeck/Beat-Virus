@@ -19,7 +19,7 @@ I pass in a float array of size 512 (samplesLeft and samplesRight in the above i
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FFTTest.gif)
 
-So, thanks to Unity, a lot of hard work is done already, however, 512 different freqeuency bands is a bit difficult to work with, and GetSpectrumData() requires the length of the float array to be a power of 2 with a minimum of 64 where slightly larger float array lengths produce more pleasant results without hurting performance. At this point, it's up to the programmer how he or she wants to shape the data for the application, but I decided to condense it into 8 frequency bands (low to high). With this setup, kick and bass sounds would generally be in the first or second frequency band, and it wasn't too difficult to isolate mids and highs either. I used this math to separate them.
+So, thanks to Unity, a lot of hard work is done already, however, 512 different frequency bands is a bit difficult to work with, and GetSpectrumData() requires the length of the float array to be a power of 2 with a minimum of 64 where slightly larger float array lengths produce more pleasant results without hurting performance. At this point, it's up to the programmer how he or she wants to shape the data for the application, but I decided to condense it into 8 frequency bands (low to high). With this setup, kick and bass sounds would generally be in the first or second frequency band, and it wasn't too difficult to isolate mids and highs either. I used this math to separate them.
 
 ![alt-text](https://github.com/dylanmpeck/Beat-Virus/blob/master/ReadmeImages/FreqMath.png)
 
